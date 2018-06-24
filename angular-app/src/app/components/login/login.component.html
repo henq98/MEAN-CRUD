@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <div class="row">
+    <div class="col-sm-8">
+      <label for="username">Usuário</label>
+      <input type="text" class="form-control" formControlName="username" id="username" placeholder="Informe seu usuário">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <label for="password">Senha</label>
+      <input type="password" class="form-control" formControlName="password" id="password" placeholder="Informe sua senha">
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-dark">Conectar</button>
+
+</form>

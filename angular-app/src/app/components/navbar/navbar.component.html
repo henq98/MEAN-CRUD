@@ -1,0 +1,21 @@
+<nav class="navbar navbar-dark bg-dark">
+
+  <a class="navbar-item" [routerLink]="['']">
+    <img src="../../../assets/mean-logo.png" width="120" height="60" alt="MEAN">
+  </a>
+
+  <ul class="nav justify-content-end">
+    <li class="nav-item" *ngIf="!authService.loggedIn()">
+      <a class="nav-link " [routerLink]="['/register']">Cadastrar</a>
+    </li>
+    <li class="nav-item" *ngIf="!authService.loggedIn()">
+      <a class="nav-link" [routerLink]="['/login']">Conectar</a>
+    </li>
+    <li class="nav-item" *ngIf="authService.loggedIn()">
+      <a class="nav-link" [routerLink]="['/profile']">Perfil</a>
+    </li>
+    <li class="nav-item" *ngIf="authService.loggedIn()">
+      <a class="nav-link" (click)="onLogoutClick()" [routerLink]="['/home']">Desconectar</a>
+    </li>
+  </ul>
+</nav>

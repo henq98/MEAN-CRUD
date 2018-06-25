@@ -30,7 +30,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (!this.form.valid) {
-      return this.flashMessagesService.show('Preencha todos os campos', { cssClass: 'alert-danger', timeout: 1500 });
+      return this.flashMessagesService.show('Preencha todos os campos', { 
+        cssClass: 'alert-danger', 
+        timeout: 1500 });
     }
     if (this.form.valid) {
       const user = {

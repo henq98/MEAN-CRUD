@@ -8,6 +8,12 @@ const mongoose = require('mongoose');
 const app = express();
 app.listen(3000);
 
+// Connect to Database
+const config = require('./config/database');
+mongoose.connect(config.database)
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err));
+
 // Middlewares
 app.use(bodyParser.json());
 
@@ -31,16 +37,4 @@ app.get('/', (req, res) => {
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
-});
-
-// Connect to Database
-const config = require('./config/database');
-mongoose.connect(config.database);
-
-// Database Status
-mongoose.connection.on('connected', () => {
-    console.log(`DB connected on: ${config.database}`);
-});
-mongoose.connection.on('error', (err) => {
-    console.log(`DB error: ${err}`);
 });

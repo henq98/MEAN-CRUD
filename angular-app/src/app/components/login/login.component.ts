@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (!this.form.valid) {
-      this.flashMessagesService.show('Preencha todos os campos', { cssClass: 'alert-danger', timeout: 1500 });
+      return this.flashMessagesService.show('Preencha todos os campos', { cssClass: 'alert-danger', timeout: 1500 });
     }
     if (this.form.valid) {
       const user = {
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       };
       this.authService.athenticateUser(user).subscribe(data => {
         if (!data.success) {
-          this.flashMessagesService.show(data.msg, {
+          return this.flashMessagesService.show(data.msg, {
             cssClass: 'alert-danger',
             timeout: 1000
           });

@@ -32,9 +32,15 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     if (!this.form.controls.email.valid) {
-      this.flashMessagesService.show('E-mail inválido.', { cssClass: 'alert-danger', timeout: 1000 });
+      return this.flashMessagesService.show('E-mail inválido.', { 
+        cssClass: 'alert-danger', 
+        timeout: 1000 
+      });
     } else if (!this.form.valid) {
-      this.flashMessagesService.show('Preencha todos os campos.', { cssClass: 'alert-danger', timeout: 1000 });
+      return this.flashMessagesService.show('Preencha todos os campos.', { 
+        cssClass: 'alert-danger', 
+        timeout: 1000 
+      });
     }
     if (this.form.valid) {
       const user = {
@@ -45,9 +51,15 @@ export class RegisterComponent implements OnInit {
       };
       this.authService.registerUser(user).subscribe(data => {
         if (!data.success) {
-          this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 1000 });
+          return this.flashMessagesService.show(data.msg, { 
+            cssClass: 'alert-danger', 
+            timeout: 1000 
+          });
         }else {
-          this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 1000 });
+          this.flashMessagesService.show(data.msg, { 
+            cssClass: 'alert-success', 
+            timeout: 1000 
+          });
           this.router.navigate(['/login']);
         }
       });
